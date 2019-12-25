@@ -1,6 +1,6 @@
 # Array And Strings Methods
 
-The aim of the exercise is to make you femilier with the array and strings methods.
+The aim of the exercise is to make you familier with the array and strings methods.
 * [ ] Scope
 * [ ] Array Methods
 * [ ] String Methods

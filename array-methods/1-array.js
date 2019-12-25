@@ -6,6 +6,7 @@ var strings = ["this", "is", "a", "collection", "of", "words"];
 
 // Find largest number in numbers
 
+
 // Find longest string in strings
 
 // Find all the even numbers
