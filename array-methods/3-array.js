@@ -15,8 +15,6 @@ var words = [
 // Write a function uniqueArray that receives an array of words as a parameter. And remove the duplicates, and return a new array. 
 // (indexOf)
 
-
-
 var words2 = [
   'machine',
   'subset',
@@ -28,7 +26,8 @@ var words2 = [
   'disobedience'
 ];
 
-// Write a function doesWordExist that will take in an array of words as one argument, and a word to search for as the other. Return true if it exists, otherwise, return false. Don't use indexOf for this one.
+// Write a function doesWordExist that will take in an array of words as one argument, and a word to search for as the other. 
+// Return true if it exists, otherwise, return false. Don't use indexOf for this one.
 
 
 
