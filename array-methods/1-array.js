@@ -88,10 +88,10 @@ console.log(strings.slice(2, 4));
 
 numbers[numbers.indexOf(12)] = 1221;
 numbers[numbers.indexOf(18)] = 1881;
-// console.log(numbers);
+console.log(numbers);
 
 // Replace words with string in strings array
-console.log(strings.replace('collection', 'array'));
+console.log(strings.replace("collection", "array"));
 
 // Customers Array
 var customers = [
@@ -102,6 +102,14 @@ var customers = [
 ];
 // Find all customers whose firstname starts with 'J'
 
+var firstnamewithJ = customers.filter(i => i.firstname.startsWith("J"));
+
 // Create new array with firstname and lastname
 
+let arr = [];
+customers.forEach(function(i) {
+	arr.push(`${i.firstname} + ${i.lastname}`);
+});
+
 // Sort the array created above alphabetically
+arr.sort();
