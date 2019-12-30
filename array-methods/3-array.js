@@ -15,10 +15,9 @@ var words = [
 // Write a function uniqueArray that receives an array of words as a parameter. And remove the duplicates, and return a new array.
 // (indexOf)
 function uniqueArray(words) {
-    
-
+	let removeArr = words.filter((i, index) => words.indexOf(i) == index);
+	return removeArr;
 }
-
 
 var words2 = [
 	"machine",
@@ -33,6 +32,11 @@ var words2 = [
 
 // Write a function doesWordExist that will take in an array of words as one argument, and a word to search for as the other.
 // Return true if it exists, otherwise, return false. Don't use indexOf for this one.
+
+function doesWordExist(words2, searchterm) {
+	return words2.includes(searchterm);
+}
+console.log(doesWordExist(words2, "matter"));
 
 var words3 = [
 	"machine",
@@ -49,8 +53,17 @@ var words3 = [
 ];
 
 // Write a function howManyTimes that will take in an array of words as one argument, and a word to search for as the other. The function will return the number of times that word appears in the array.
+function howManyTimes(words3, word) {
+	let arr = [word];
+	words3.forEach(i => {
+		if (arr.includes(i)) {
+			arr.push(i);
+		}
+	});
+	return arr.length;
+}
+console.log(howManyTimes(words3, "matter"));
 
-// Using the reduce() method, how would you sum up the population of every country except China?
 let data = [
 	{
 		country: "China",
@@ -69,9 +82,19 @@ let data = [
 		pop: 263991379
 	}
 ];
+// Using the reduce() method, how would you sum up the population of every country except China?
+data.reduce((accumulator, i) => {
+	if (i.country == "China") {
+		return accumulator;
+	} else {
+		return acc + i.pop;
+	}
+}, 0);
+console.log(totalPoluation);
 
 // Use reduce method and summorize the collection like
 // { banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1 }
+
 const fruitBasket = [
 	"banana",
 	"cherry",
@@ -85,7 +108,16 @@ const fruitBasket = [
 	"orange",
 	"fig"
 ];
-
+// data.reduce((accumulator, i) => {
+//     fruitBasket.forEach(i => {
+// 		if (arr.includes(i)) {
+// 			arr.push(i);
+//         }
+        
+//     });
+    
+		
+// }, 0);
 // Bonus Question (Solve only if you have time)
 var matrix = [
 	[
