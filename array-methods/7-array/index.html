@@ -87,8 +87,15 @@
 				}, []);
 			}
 
-			function peopleNameOfAllHouses() {
+			function peopleNameOfAllHouses(got) {
 				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					acc[cv.name] = [];
+					cv.people.map(data => {
+						acc[cv.name] = acc[cv.name].concat(data.name);
+					});
+					return acc;
+				}, {});
 			}
 
 			// Testing your result after writing your function
@@ -111,15 +118,15 @@
 			// Output should be
 			// ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon", "Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Yara Greyjoy", "Margaery Baratheon", "Loras Tyrell", "Catelyn Stark", "Lysa Arryn", "Olenna Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
 
-			console.log(surnameWithS());
+			console.log(surnameWithS(got));
 			// Output should be
 			// ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow", "Catelyn Stark"]
 
-			console.log(surnameWithA());
+			console.log(surnameWithA(got));
 			// Output should be
 			// ["Lysa Arryn", "Jon Arryn"]
 
-			console.log(peopleNameOfAllHouses());
+			console.log(peopleNameOfAllHouses(got));
 			// Output should be
 			// {Arryns: ["Jon Arryn"], Baratheons: ["Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon"], Dothrakis: ["Khal Drogo"], Freys: ["Walder Frey"], Greyjoys: ["Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy"], Lannisters: ["Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon"], Redwyne: ["Olenna Tyrell"], Starks: ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow"], Targaryens: ["Daenerys Targaryen", "Viserys Targaryen"], Tullys: ["Catelyn Stark", "Lysa Arryn", "Edmure Tully", "Brynden Tully"], Tyrells: ["Margaery Baratheon", "Loras Tyrell"]}
 		</script>
