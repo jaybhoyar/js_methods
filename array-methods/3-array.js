@@ -108,16 +108,18 @@ const fruitBasket = [
 	"orange",
 	"fig"
 ];
-// data.reduce((accumulator, i) => {
-//     fruitBasket.forEach(i => {
-// 		if (arr.includes(i)) {
-// 			arr.push(i);
-//         }
-        
-//     });
-    
-		
-// }, 0);
+
+function count(fruitBasket) {
+	let obj = {};
+	let counter = 1;
+	forEach(i => {
+		if (fruitBasket.includes(i)) {
+			obj[i] = counter++;
+		}
+	});
+	return obj;
+}
+console.log(count);
 // Bonus Question (Solve only if you have time)
 var matrix = [
 	[
@@ -185,8 +187,7 @@ var matrix = [
 		13,
 		36,
 		65
-	],
-	[
+	],[
 		52,
 		70,
 		95,
@@ -563,3 +564,5 @@ var matrix = [
 ];
 // In the 20×20 grid above What is the greatest product of four adjacent numbers in the same direction (up, down, left, right)?
 // Write a function greatestProduct to find the answer!
+
+function greatestProduct() {}
