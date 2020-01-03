@@ -17,8 +17,8 @@
 					count = i.people.length;
 				});
 				return count;
-            }
-            // peopleByHouses
+			}
+			// peopleByHouses
 			function peopleByHouses(got) {
 				let x = got.houses.reduce((accu, currentvalue) => {
 					accu[currentvalue.name] = currentvalue.people.length;
@@ -26,24 +26,65 @@
 				}, {});
 				return x;
 			}
-			function everyone() {
+			function everyone(got) {
 				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					cv.people.map(data => {
+						acc = acc.concat(data.name);
+					});
+					return acc;
+				}, []);
 			}
 
-			function nameWithS() {
+			function nameWithS(got) {
 				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					cv.people.map(data => {
+						if (data.name.toLowerCase().includes("s")) {
+							acc = acc.concat(data.name);
+						}
+					});
+					return acc;
+				}, []);
 			}
 
 			function nameWithA() {
 				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					cv.people.map(data => {
+						if (data.name.toLowerCase().includes("a")) {
+							acc = acc.concat(data.name);
+						}
+					});
+					return acc;
+				}, []);
 			}
 
-			function surnameWithS() {
+			function surnameWithS(got) {
 				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					cv.people.map(data => {
+						let info = data.name.split(" ");
+						//console.log(info);
+						if (info[1].includes("S")) {
+							acc = acc.concat(info.join(" ")); //console.log(info);
+						}
+					});
+					return acc;
+				}, []);
 			}
 
 			function surnameWithA() {
-				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					cv.people.map(data => {
+						let info = data.name.split(" ");
+						//console.log(info);
+						if (info[1].includes("A")) {
+							acc = acc.concat(info.join(" ")); //console.log(info);
+						}
+					});
+					return acc;
+				}, []);
 			}
 
 			function peopleNameOfAllHouses() {
@@ -58,15 +99,15 @@
 			// Output should be
 			//{Arryns: 1, Baratheons: 6, Dothrakis: 1, Freys: 1, Greyjoys: 3, Lannisters: 4,Redwyne: 1,Starks: 8,Targaryens: 2,Tullys: 4,Tyrells: 2}
 
-			console.log(everyone());
+			console.log(everyone(got));
 			// Output should be
 			//["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "King Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy", "Margaery (Tyrell) Baratheon", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn", "Edmure Tully", "Brynden Tully", "Olenna (Redwyne) Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
 
-			console.log(nameWithS());
+			console.log(nameWithS(got));
 			// Output should be
 			// ["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "Stannis Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn"]
 
-			console.log(nameWithA());
+			console.log(nameWithA(got));
 			// Output should be
 			// ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon", "Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Yara Greyjoy", "Margaery Baratheon", "Loras Tyrell", "Catelyn Stark", "Lysa Arryn", "Olenna Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
 
