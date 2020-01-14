@@ -5,7 +5,7 @@ var strings = ["this", "is", "a", "collection", "of", "words"];
 // Use the above two arrays and practice array methods
 
 // Find largest number in numbers
-console.log(Math.max(numbers));
+console.log(Math.max(...numbers));
 
 // Find longest string in strings
 let arr = [];
@@ -42,12 +42,11 @@ console.log(arr);
 // Find all the words that contain 'is' use string method 'indexOf'
 function wordCounter(s, word) {
 	let count = s.indexOf(word);
-	//     count++;
-	//   }
+	count++;
 	return count;
 }
 
-console.log(wordCounter(strings.join(" "), "is"));
+console.log(wordCounter(strings, "is"));
 
 // Check if all the numbers in numbers array are divisible by three use array method (every)
 let arr = [];
