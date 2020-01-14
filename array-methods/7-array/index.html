@@ -10,11 +10,12 @@
 		<script src="./data.js"></script>
 		<script>
 			// Go through todo.md before start solving.
+
 			function countAllPeople(got) {
 				// your code goes here
-				let people = 0;
+				let count = 0;
 				got.houses.forEach(i => {
-					count = i.people.length;
+					count += i.people.length;
 				});
 				return count;
 			}
