@@ -1,79 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Array Methods Practice</title>
-  </head>
-  <body>
-    <script src="./data.js"></script>
-    <script>
-      // Go through todo.md before start solving.
-      function countAllPeople() {
-        // your code goes here
-        console.log(got);
-      }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Array Methods Practice</title>
+	</head>
+	<body>
+		<script src="./data.js"></script>
+		<script>
+			// Go through todo.md before start solving.
 
-      function peopleByHouses() {
-        // your code goes here
-      }
+			function countAllPeople(got) {
+				// your code goes here
+				let count = 0;
+				got.houses.forEach(i => {
+					count += i.people.length;
+				});
+				return count;
+			}
+			// peopleByHouses
+			function peopleByHouses(got) {
+				let x = got.houses.reduce((accu, currentvalue) => {
+					accu[currentvalue.name] = currentvalue.people.length;
+					return accu;
+				}, {});
+				return x;
+			}
+			function everyone(got) {
+				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					cv.people.map(data => {
+						acc = acc.concat(data.name);
+					});
+					return acc;
+				}, []);
+			}
 
-      function everyone() {
-        // your code goes here
-      }
+			function nameWithS(got) {
+				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					cv.people.map(data => {
+						if (data.name.toLowerCase().includes("s")) {
+							acc = acc.concat(data.name);
+						}
+					});
+					return acc;
+				}, []);
+			}
 
-      function nameWithS() {
-        // your code goes here
-      }
+			function nameWithA() {
+				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					cv.people.map(data => {
+						if (data.name.toLowerCase().includes("a")) {
+							acc = acc.concat(data.name);
+						}
+					});
+					return acc;
+				}, []);
+			}
 
-      function nameWithA() {
-        // your code goes here
-      }
+			function surnameWithS(got) {
+				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					cv.people.map(data => {
+						let info = data.name.split(" ");
+						//console.log(info);
+						if (info[1].includes("S")) {
+							acc = acc.concat(info.join(" ")); //console.log(info);
+						}
+					});
+					return acc;
+				}, []);
+			}
 
-      function surnameWithS() {
-        // your code goes here
-      }
+			function surnameWithA() {
+				return got.houses.reduce((acc, cv) => {
+					cv.people.map(data => {
+						let info = data.name.split(" ");
+						//console.log(info);
+						if (info[1].includes("A")) {
+							acc = acc.concat(info.join(" ")); //console.log(info);
+						}
+					});
+					return acc;
+				}, []);
+			}
 
-      function surnameWithA() {
-        // your code goes here
-      }
+			function peopleNameOfAllHouses(got) {
+				// your code goes here
+				return got.houses.reduce((acc, cv) => {
+					acc[cv.name] = [];
+					cv.people.map(data => {
+						acc[cv.name] = acc[cv.name].concat(data.name);
+					});
+					return acc;
+				}, {});
+			}
 
-      function peopleNameOfAllHouses() {
-        // your code goes here
-      }
+			// Testing your result after writing your function
+			console.log(countAllPeople(got));
+			// Output should be 33
 
-      // Testing your result after writing your function
-      console.log(countAllPeople());
-      // Output should be 33
+			console.log(peopleByHouses(got));
+			// Output should be
+			//{Arryns: 1, Baratheons: 6, Dothrakis: 1, Freys: 1, Greyjoys: 3, Lannisters: 4,Redwyne: 1,Starks: 8,Targaryens: 2,Tullys: 4,Tyrells: 2}
 
-      console.log(peopleByHouses());
-      // Output should be
-      //{Arryns: 1, Baratheons: 6, Dothrakis: 1, Freys: 1, Greyjoys: 3, Lannisters: 4,Redwyne: 1,Starks: 8,Targaryens: 2,Tullys: 4,Tyrells: 2}
+			console.log(everyone(got));
+			// Output should be
+			//["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "King Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy", "Margaery (Tyrell) Baratheon", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn", "Edmure Tully", "Brynden Tully", "Olenna (Redwyne) Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
 
-      console.log(everyone());
-      // Output should be
-      //["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "King Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy", "Margaery (Tyrell) Baratheon", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn", "Edmure Tully", "Brynden Tully", "Olenna (Redwyne) Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
+			console.log(nameWithS(got));
+			// Output should be
+			// ["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "Stannis Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn"]
 
-      console.log(nameWithS());
-      // Output should be
-      // ["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "Stannis Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn"]
+			console.log(nameWithA(got));
+			// Output should be
+			// ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon", "Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Yara Greyjoy", "Margaery Baratheon", "Loras Tyrell", "Catelyn Stark", "Lysa Arryn", "Olenna Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
 
-      console.log(nameWithA());
-      // Output should be
-      // ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon", "Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Yara Greyjoy", "Margaery Baratheon", "Loras Tyrell", "Catelyn Stark", "Lysa Arryn", "Olenna Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
+			console.log(surnameWithS(got));
+			// Output should be
+			// ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow", "Catelyn Stark"]
 
-      console.log(surnameWithS());
-      // Output should be
-      // ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow", "Catelyn Stark"]
+			console.log(surnameWithA(got));
+			// Output should be
+			// ["Lysa Arryn", "Jon Arryn"]
 
-      console.log(surnameWithA());
-      // Output should be
-      // ["Lysa Arryn", "Jon Arryn"]
-
-      console.log(peopleNameOfAllHouses());
-      // Output should be
-      // {Arryns: ["Jon Arryn"], Baratheons: ["Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon"], Dothrakis: ["Khal Drogo"], Freys: ["Walder Frey"], Greyjoys: ["Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy"], Lannisters: ["Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon"], Redwyne: ["Olenna Tyrell"], Starks: ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow"], Targaryens: ["Daenerys Targaryen", "Viserys Targaryen"], Tullys: ["Catelyn Stark", "Lysa Arryn", "Edmure Tully", "Brynden Tully"], Tyrells: ["Margaery Baratheon", "Loras Tyrell"]}
-    </script>
-  </body>
+			console.log(peopleNameOfAllHouses(got));
+			// Output should be
+			// {Arryns: ["Jon Arryn"], Baratheons: ["Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon"], Dothrakis: ["Khal Drogo"], Freys: ["Walder Frey"], Greyjoys: ["Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy"], Lannisters: ["Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon"], Redwyne: ["Olenna Tyrell"], Starks: ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow"], Targaryens: ["Daenerys Targaryen", "Viserys Targaryen"], Tullys: ["Catelyn Stark", "Lysa Arryn", "Edmure Tully", "Brynden Tully"], Tyrells: ["Margaery Baratheon", "Loras Tyrell"]}
+		</script>
+	</body>
 </html>
